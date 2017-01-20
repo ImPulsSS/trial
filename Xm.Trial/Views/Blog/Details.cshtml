@@ -1,0 +1,35 @@
+﻿@model Xm.Trial.Models.PostViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<article>
+    <header>
+        <h1>@Model.Title</h1>
+        @Html.Partial("PostMeta")
+    </header>
+
+    <figure>
+        <img src="@Model.Picture" alt="@Model.Title">
+        <figcaption>@Model.PictureCaption</figcaption>
+    </figure>
+
+    @Html.Raw(Model.Text)
+       
+    <footer>
+        <p>
+            <button data-action="like" data-post-id="@Model.Id">@Model.Likes</button>
+        </p>
+
+        @if (Model.Tags?.Any() == true)
+        {
+            <small>
+                @foreach (var tag in Model.Tags)
+                {
+                    <a href="@Url.Action("Index", "Blog", new RouteValueDictionary { ["tag"] = tag.Id })" class="tag">@tag.Name</a>
+                }
+            </small>
+        }
+    </footer>
+</article>

@@ -1,0 +1,27 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    
+    @Styles.Render("~/Content/bundles/css")
+</head>
+<body>
+    <header>Blog</header>
+
+    @Html.Partial("Menu")
+    
+    <main>
+        @RenderBody()
+    </main>
+    
+    <footer>
+        <small>
+            Copyright © @DateTime.UtcNow.Year blog. All rights reserved
+        </small>
+    </footer>
+
+    @Scripts.Render("~/Content/bundles/js")
+</body>
+</html>
